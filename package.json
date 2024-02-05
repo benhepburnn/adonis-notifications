@@ -1,21 +1,21 @@
 {
   "name": "@benhepburn/adonis-mongoose",
   "description": "A Mongoose provider for AdonisJS (currently only v6)",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "engines": {
     "node": ">=18.16.0"
   },
   "type": "module",
+  "main": "build/index.js",
   "files": [
-    "build/src",
-    "build/providers",
-    "build/stubs",
-    "build/index.d.ts",
-    "build/index.js"
+    "build",
+    "!build/bin",
+    "!build/tests"
   ],
   "exports": {
     ".": "./build/index.js",
-    "./types": "./build/src/types.js"
+    "./types": "./build/src/types.js",
+    "./mongoose_provider": "./build/providers/mongoose_provider.js"
   },
   "scripts": {
     "clean": "del-cli build",

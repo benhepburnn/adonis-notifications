@@ -1,3 +1,11 @@
-import { MongooseConfig } from "./types.js";
+import { MongooseConfig } from './types.js'
 
-export declare function defineConfig(config: MongooseConfig): MongooseConfig;
+export function defineConfig(config: MongooseConfig): MongooseConfig {
+  return {
+    mongodb: {
+      useDefaultConnection: config.mongodb.useDefaultConnection || true,
+      uri: config.mongodb.uri,
+      options: config.mongodb.options || {},
+    },
+  }
+}
