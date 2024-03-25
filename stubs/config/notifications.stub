@@ -15,4 +15,4 @@ const notificationsConfig = defineConfig({
   }
 })
 
-export default mongooseConfig
+export default notificationsConfig
