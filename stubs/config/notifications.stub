@@ -1,0 +1,18 @@
+{{{
+  exports({
+    to: app.configPath('notifications.ts')
+  })
+}}}
+import { defineConfig } from '@benhepburn/adonis-notifications'
+// import AwsSnsChannel from '@benhepburn/adonis-notifications/channels/aws_sns'
+
+/**
+ * Configuration options to use notifications in your AdonisJS application.
+ */
+const notificationsConfig = defineConfig({
+  channels: {
+    // sms: AwsSnsChannel
+  }
+})
+
+export default mongooseConfig

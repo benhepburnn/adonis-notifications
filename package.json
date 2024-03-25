@@ -1,9 +1,9 @@
 {
-  "name": "@benhepburn/adonis-mongoose",
-  "description": "A Mongoose provider for AdonisJS (currently only v6)",
-  "version": "1.2.0",
+  "name": "@benhepburn/adonis-notifications",
+  "description": "A Laravel-inspired notifications provider for AdonisJS (currently only v6)",
+  "version": "0.0.0",
   "engines": {
-    "node": ">=18.16.0"
+    "node": ">=20.0.0"
   },
   "type": "module",
   "main": "build/index.js",
@@ -15,7 +15,7 @@
   "exports": {
     ".": "./build/index.js",
     "./types": "./build/src/types.js",
-    "./mongoose_provider": "./build/providers/mongoose_provider.js"
+    "./notifications_provider": "./build/providers/notifications_provider.js"
   },
   "scripts": {
     "clean": "del-cli build",
@@ -36,13 +36,13 @@
   "keywords": [
     "adonis",
     "adonisjs",
-    "mongoose",
-    "mongodb",
-    "typegoose",
+    "notifications",
+    "sms",
+    "email",
     "adonis js",
-    "mongo",
     "provider",
-    "service"
+    "service",
+    "sns"
   ],
   "author": "benhepburn",
   "license": "MIT",
@@ -60,15 +60,13 @@
     "copyfiles": "^2.4.1",
     "del-cli": "^5.0.0",
     "eslint": "^8.38.0",
-    "mongoose": "^8.1.1",
     "np": "^9.2.0",
     "prettier": "^3.1.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "peerDependencies": {
-    "@adonisjs/core": "^6.2.0",
-    "mongoose": "^8.1.1"
+    "@adonisjs/core": "^6.2.0"
   },
   "publishConfig": {
     "access": "public",

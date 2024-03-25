@@ -1,12 +1,12 @@
-import { ConnectOptions } from 'mongoose'
+import NotificationChannel from './channels/notification_channel.js'
 
-export type MongoDbConfig = {
-  useDefaultConnection: boolean
-  uri: string
-  options: ConnectOptions
+type Constructor<T> = { new (): T }
+
+export type NotificationsConfig = {
+  channels: Record<string, Constructor<NotificationChannel>>
 }
 
-export type MongooseConfig = {
-  mongodb: MongoDbConfig
-  syncIndexesOnStart: boolean
+export type SmsMessage = {
+  message: string
+  to: string
 }

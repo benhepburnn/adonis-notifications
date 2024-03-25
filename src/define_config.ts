@@ -1,11 +1,7 @@
-import { MongooseConfig } from './types.js'
+import { NotificationsConfig } from './types.js'
 
-export function defineConfig(config: MongooseConfig): MongooseConfig {
+export function defineConfig(config: NotificationsConfig): NotificationsConfig {
   return {
-    mongodb: {
-      useDefaultConnection: config.mongodb.useDefaultConnection || true,
-      uri: config.mongodb.uri,
-      options: config.mongodb.options || {},
-    },
+    channels: config.channels,
   }
 }
