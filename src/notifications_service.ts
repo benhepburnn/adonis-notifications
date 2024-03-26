@@ -1,4 +1,4 @@
-import { NotificationChannel } from '../index.js'
+import NotificationChannel from './channels/notification_channel.js'
 import Notification from './notification.js'
 import ChannelNotBoundException from './exceptions/channel_not_bound_exception.js'
 

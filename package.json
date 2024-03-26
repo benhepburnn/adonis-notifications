@@ -15,7 +15,9 @@
   "exports": {
     ".": "./build/index.js",
     "./types": "./build/src/types.js",
-    "./notifications_provider": "./build/providers/notifications_provider.js"
+    "./notifications_provider": "./build/providers/notifications_provider.js",
+    "./notification": "./build/src/notification.js",
+    "./notification_channel": "./build/src/channels/notification_channel.js"
   },
   "scripts": {
     "clean": "del-cli build",
