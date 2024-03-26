@@ -1,7 +1,7 @@
 import { Notifiable, SmsMessage } from './types.js'
 
 export abstract class Notification {
-  notifiable?: Notifiable
+  protected notifiable?: Notifiable
 
   to(notifiable: Notifiable) {
     this.notifiable = notifiable

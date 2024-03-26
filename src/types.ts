@@ -12,6 +12,6 @@ export type SmsMessage = {
 }
 
 export interface Notifiable {
-  mobile(): string
-  email(): string
+  notificationGetMobile(): string
+  notificationGetEmail(): string
 }
