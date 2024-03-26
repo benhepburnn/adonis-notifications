@@ -1,7 +1,7 @@
 {
   "name": "@benhepburn/adonis-notifications",
   "description": "A Laravel-inspired notifications provider for AdonisJS (currently only v6)",
-  "version": "0.3.4",
+  "version": "0.3.5",
   "engines": {
     "node": ">=20.0.0"
   },
