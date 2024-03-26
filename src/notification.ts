@@ -1,6 +1,6 @@
 import { SmsMessage } from './types.js'
 
-export default abstract class Notification {
+export abstract class Notification {
   via() {
     return ['sms']
   }

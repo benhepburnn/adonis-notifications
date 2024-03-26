@@ -1,4 +1,4 @@
-import NotificationChannel from './channels/notification_channel.js'
+import { NotificationChannel } from './channels/notification_channel.js'
 
 type Constructor<T> = { new (): T }
 

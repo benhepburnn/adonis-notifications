@@ -1,6 +1,6 @@
-import Notification from '../notification.js'
+import { Notification } from '../notification.js'
 
-export default abstract class NotificationChannel {
+export abstract class NotificationChannel {
   boot() {}
 
   abstract send(notification: Notification): Promise<void>
