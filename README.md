@@ -1,59 +1,35 @@
-# AdonisJS Mongoose
+# AdonisJS Notifications
 
-This package creates a Mongoose service for use in AdonisJS applications.
+This package creates a notifications service for use in AdonisJS v6 applications.
 
 ## Install
 
-Install mongoose from npm:
+Install the package:
 
 ```sh
-npm install mongoose
+npm install @benhepburn/adonis-notifications
 ```
 
 or
 
 ```sh
-pnpm install mongoose
+pnpm install @benhepburn/adonis-notifications
 ```
 
 or
 
 ```sh
-yarn add mongoose
+yarn add @benhepburn/adonis-notifications
 ```
 
 <br />
 
-Then, install the package:
+Then, configure the package for Adonis:
 
 ```sh
-npm install @benhepburn/adonis-mongoose
-```
-
-or
-
-```sh
-pnpm install @benhepburn/adonis-mongoose
-```
-
-or
-
-```sh
-yarn add @benhepburn/adonis-mongoose
-```
-
-<br />
-
-Finally, configure the package for Adonis:
-
-```sh
-node ace configure @benhepburn/adonis-mongoose
+node ace configure @benhepburn/adonis-notifications
 ```
 
 ## Configuration
 
-Edit config/mongoose.ts as needed, then add the MongoDB connection URI to your .env file:
-
-```dotenv
-MONGODB_URI=mongodb://...
-```
+Set the channel you wish to use for each notification type in config/notifications.ts.
