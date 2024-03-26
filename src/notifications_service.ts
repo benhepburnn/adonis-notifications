@@ -10,6 +10,7 @@ export default class NotificationsService {
 
   constructor(config: NotificationsConfig) {
     this.config = config
+    this.boot()
   }
 
   get channelKeys() {
