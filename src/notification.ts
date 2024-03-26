@@ -1,6 +1,12 @@
-import { SmsMessage } from './types.js'
+import { Notifiable, SmsMessage } from './types.js'
 
 export abstract class Notification {
+  notifiable?: Notifiable
+
+  to(notifiable: Notifiable) {
+    this.notifiable = notifiable
+  }
+
   via() {
     return ['sms']
   }

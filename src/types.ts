@@ -10,3 +10,8 @@ export type SmsMessage = {
   message: string
   to: string
 }
+
+export interface Notifiable {
+  mobile(): string
+  email(): string
+}
