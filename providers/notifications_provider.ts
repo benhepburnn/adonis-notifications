@@ -15,7 +15,12 @@ export default class NotificationsProvider {
   /**
    * The container bindings have booted
    */
-  async boot() {
+  async boot() {}
+
+  /**
+   * The application has been booted
+   */
+  async start() {
     const service = await this.app.container.make('notifications')
     const config = this.app.config.get('notifications') as NotificationsConfig
 
@@ -25,11 +30,6 @@ export default class NotificationsProvider {
       service.channelBindings[key] = channelInstance
     })
   }
-
-  /**
-   * The application has been booted
-   */
-  async start() {}
 
   /**
    * The process has been started
