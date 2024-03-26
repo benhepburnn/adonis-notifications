@@ -9,7 +9,12 @@ export default class NotificationsProvider {
    * Register bindings to the container
    */
   register() {
-    this.app.container.singleton('notifications', () => new NotificationsService())
+    this.app.container.singleton('notifications', async (resolver) => {
+      const config = await resolver.make('config')
+      const notificationsConfig = config.get('notifications') as NotificationsConfig
+
+      return new NotificationsService(notificationsConfig)
+    })
   }
 
   /**
@@ -20,16 +25,7 @@ export default class NotificationsProvider {
   /**
    * The application has been booted
    */
-  async start() {
-    const service = await this.app.container.make('notifications')
-    const config = this.app.config.get('notifications') as NotificationsConfig
-
-    Object.entries(config.channels).forEach(([key, channel]) => {
-      const channelInstance = new channel()
-      channelInstance.boot()
-      service.channelBindings[key] = channelInstance
-    })
-  }
+  async start() {}
 
   /**
    * The process has been started
