@@ -1,6 +1,7 @@
 import { NotificationChannel } from './channels/notification_channel.js'
 import { Notification } from './notification.js'
 import ChannelNotBoundException from './exceptions/channel_not_bound_exception.js'
+import { Notifiable } from './types.js'
 
 export default class NotificationsService {
   channelBindings: Record<string, NotificationChannel> = {}
@@ -13,7 +14,8 @@ export default class NotificationsService {
     return Object.values(this.channelBindings)
   }
 
-  async sendNotification(notification: Notification) {
+  async sendNotification(to: Notifiable, notification: Notification) {
+    notification.to(to)
     const via = notification.via()
 
     // Validate all via channels are bound
