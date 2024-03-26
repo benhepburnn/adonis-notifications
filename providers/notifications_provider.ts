@@ -20,7 +20,10 @@ export default class NotificationsProvider {
   /**
    * The container bindings have booted
    */
-  async boot() {}
+  async boot() {
+    const service = await this.app.container.make('notifications')
+    service.boot()
+  }
 
   /**
    * The application has been booted

@@ -9,7 +9,6 @@ export default class NotificationsService {
 
   constructor(config: NotificationsConfig) {
     this.config = config
-    this.configure()
   }
 
   get channelKeys() {
@@ -20,7 +19,7 @@ export default class NotificationsService {
     return Object.values(this.channelBindings)
   }
 
-  private configure() {
+  boot() {
     Object.entries(this.config.channels).forEach(([key, channel]) => {
       const channelInstance = new channel()
       channelInstance.boot()
