@@ -4,7 +4,7 @@
   })
 }}}
 import { defineConfig } from '@benhepburn/adonis-notifications'
-// import AwsSnsChannel from '@benhepburn/adonis-notifications/channels/aws_sns'
+// import { AwsSnsChannel } from '@benhepburn/adonis-notifications-aws-sns-channel'
 
 /**
  * Configuration options to use notifications in your AdonisJS application.
