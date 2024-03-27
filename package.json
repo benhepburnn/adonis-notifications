@@ -16,6 +16,7 @@
     ".": "./build/index.js",
     "./types": "./build/src/types.js",
     "./notifications_provider": "./build/providers/notifications_provider.js",
+    "./service": "./build/services/main.js",
     "./errors": "./build/src/exceptions/index.js"
   },
   "scripts": {

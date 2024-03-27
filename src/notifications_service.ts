@@ -1,8 +1,7 @@
 import { NotificationChannel } from './channels/notification_channel.js'
 import { Notification } from './notification.js'
-import { ChannelNotBoundException } from './exceptions/channel_not_bound_exception.js'
+import { ChannelNotBoundException, NotificationFailedException } from './exceptions/index.js'
 import { Notifiable, NotificationsConfig } from './types.js'
-import { NotificationFailedException } from './exceptions/notification_failed_exception.js'
 
 export default class NotificationsService {
   channelBindings: Record<string, NotificationChannel> = {}
