@@ -25,6 +25,11 @@ export default class FakeNotificationsService extends NotificationsService {
     })
   }
 
+  clear() {
+    const channels = this.channels as FakeChannel[]
+    channels.forEach((channel) => channel.clear())
+  }
+
   assertSent<T extends Constructor<typeof Notification>>(
     notificationConstructor: T,
     via: string | string[] = []
