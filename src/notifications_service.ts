@@ -2,10 +2,13 @@ import { NotificationChannel } from './channels/notification_channel.js'
 import { Notification } from './notification.js'
 import { ChannelNotBoundException, NotificationFailedException } from './exceptions/index.js'
 import { Notifiable, NotificationsConfig } from './types.js'
+import FakeNotificationsService from './fake_notifications_service.js'
+import app from '@adonisjs/core/services/app'
 
 export default class NotificationsService {
   channelBindings: Record<string, NotificationChannel> = {}
   config: NotificationsConfig
+  fakeService?: FakeNotificationsService
 
   constructor(config: NotificationsConfig) {
     this.config = config
@@ -48,5 +51,19 @@ export default class NotificationsService {
       throw new NotificationFailedException(notification, result)
 
     return result
+  }
+
+  useFake() {
+    if (this instanceof FakeNotificationsService) return
+
+    if (!this.fakeService) this.fakeService = new FakeNotificationsService(this.config)
+
+    app.container.swap(NotificationsService, () => {
+      return this.fakeService!
+    })
+  }
+
+  restore() {
+    app.container.restore(NotificationsService)
   }
 }

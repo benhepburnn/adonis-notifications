@@ -1,6 +1,6 @@
 import { NotificationChannel } from './channels/notification_channel.js'
 
-type Constructor<T> = { new (): T }
+export type Constructor<T> = { new (): T }
 
 export type NotificationsConfig = {
   channels: Record<string, Constructor<NotificationChannel>>
