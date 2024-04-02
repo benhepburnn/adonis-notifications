@@ -37,7 +37,7 @@ export default class NotificationsProvider {
    */
   async shutdown() {
     const service = await this.app.container.make('notifications')
-    service.channels.forEach((channel) => channel.shutdown())
+    service.handler.channels.forEach((channel) => channel.shutdown())
   }
 }
 
