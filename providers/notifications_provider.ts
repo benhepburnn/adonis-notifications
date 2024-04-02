@@ -1,6 +1,6 @@
 import type { ApplicationService } from '@adonisjs/core/types'
 import { NotificationsConfig } from '../src/types.js'
-import NotificationsService from '../src/notifications_service.js'
+import { NotificationsService } from '../src/notifications_service.js'
 
 export default class NotificationsProvider {
   constructor(protected app: ApplicationService) {}

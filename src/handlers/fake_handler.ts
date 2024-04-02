@@ -1,33 +1,18 @@
-import NotificationsService from './notifications_service.js'
-import { Constructor, NotificationsConfig } from './types.js'
-import { Notification } from './notification.js'
+import { NotificationHandler } from './notification_handler.js'
+import { Constructor, NotificationsConfig } from '../types.js'
+import { Notification } from '../notification.js'
+import { NotificationChannel } from '../channels/notification_channel.js'
 import { AssertionError } from 'node:assert'
 import string from '@adonisjs/core/helpers/string'
-import { NotificationChannel } from './channels/notification_channel.js'
-import { ChannelNotBoundException } from './exceptions/index.js'
+import { ChannelNotBoundException } from '../exceptions/index.js'
 
-export default class FakeNotificationsService extends NotificationsService {
-  constructor(config: NotificationsConfig) {
-    super(config)
-  }
-
-  get channelKeys() {
-    return Object.keys(this.channelBindings)
-  }
-
-  get channels() {
-    return Object.values(this.channelBindings)
-  }
-
-  boot() {
-    Object.keys(this.config.channels).forEach((key) => {
-      this.channelBindings[key] = new FakeChannel()
+export class FakeHandler extends NotificationHandler {
+  boot(config: NotificationsConfig) {
+    Object.keys(config.channels).forEach((key) => {
+      const channelInstance = new FakeChannel()
+      channelInstance.boot()
+      this.channelBindings[key] = channelInstance
     })
-  }
-
-  clear() {
-    const channels = this.channels as FakeChannel[]
-    channels.forEach((channel) => channel.clear())
   }
 
   assertSent<T extends Constructor<typeof Notification>>(
@@ -57,7 +42,7 @@ export default class FakeNotificationsService extends NotificationsService {
   }
 }
 
-class FakeChannel extends NotificationChannel {
+export class FakeChannel extends NotificationChannel {
   sent: Notification[] = []
 
   boot(): void {}

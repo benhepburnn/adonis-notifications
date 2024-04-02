@@ -1,5 +1,5 @@
 import app from '@adonisjs/core/services/app'
-import NotificationsService from '../src/notifications_service.js'
+import { NotificationsService } from '../src/notifications_service.js'
 
 let notifications: NotificationsService
 
