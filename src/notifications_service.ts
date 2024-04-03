@@ -20,6 +20,7 @@ export class NotificationsService {
 
   fake() {
     this.handler = new FakeHandler(this.config)
+    return this.handler as FakeHandler
   }
 
   restore() {
