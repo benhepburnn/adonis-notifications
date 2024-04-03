@@ -15,7 +15,7 @@ export class FakeHandler extends NotificationHandler {
     })
   }
 
-  assertSent<T extends Constructor<typeof Notification>>(
+  assertSent<T extends Constructor<Notification>>(
     notificationConstructor: T,
     via: string | string[] = []
   ) {
@@ -59,7 +59,7 @@ export class FakeChannel extends NotificationChannel {
   /**
    * Assert the mentioned notification was sent during the fake mode
    */
-  assertSent<T extends Constructor<typeof Notification>>(
+  assertSent<T extends Constructor<Notification>>(
     notificationConstructor: T,
     findFn?: (notification: InstanceType<T>) => boolean
   ) {
@@ -82,7 +82,7 @@ export class FakeChannel extends NotificationChannel {
   /**
    * Assert the mentioned notification was NOT sent during the fake mode
    */
-  assertNotSent<T extends Constructor<typeof Notification>>(
+  assertNotSent<T extends Constructor<Notification>>(
     notificationConstructor: T,
     findFn?: (notification: InstanceType<T>) => boolean
   ) {
@@ -111,9 +111,9 @@ export class FakeChannel extends NotificationChannel {
    * Assert the mentioned notification was sent for expected number
    * of times
    */
-  assertSentCount(notificationConstructor: Constructor<typeof Notification>, count: number): void
+  assertSentCount(notificationConstructor: Constructor<Notification>, count: number): void
   assertSentCount(
-    notificationConstructor: Constructor<typeof Notification> | number,
+    notificationConstructor: Constructor<Notification> | number,
     count?: number
   ): void {
     if (typeof notificationConstructor === 'number') {
