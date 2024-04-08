@@ -33,3 +33,17 @@ node ace configure @benhepburn/adonis-notifications
 ## Configuration
 
 Set the channel you wish to use for each notification type in config/notifications.ts.
+
+## Existing channels
+
+* [AWS SNS (currently only SMS)](https://github.com/benhepburnn/adonis-notifications-aws-sns-channel)
+
+# Creating a channel
+
+1. Set up a new AdonisJS package and add @benhepburn/adonis-notifications to the peer and dev dependencies.
+2. Create a new class extending *NotificationChannel* and implement required members
+
+Imports:
+```ts
+import { Notification, NotificationChannel } from '@benhepburn/adonis-notifications'
+```
