@@ -19,6 +19,33 @@ export class FakeHandler extends NotificationHandler {
     notificationConstructor: T,
     via: string | string[] = []
   ) {
+    const viaChannels = this.getViaChannels(via)
+
+    // For each specified channel, assert notification was sent
+    viaChannels.forEach((channel) => {
+      channel.assertSent(notificationConstructor)
+    })
+  }
+
+  assertNotSent<T extends Constructor<Notification>>(
+    notificationConstructor: T,
+    via: string | string[] = []
+  ) {
+    const viaChannels = this.getViaChannels(via)
+
+    // For each specified channel, assert notification was not sent
+    viaChannels.forEach((channel) => {
+      channel.assertNotSent(notificationConstructor)
+    })
+  }
+
+  clear(via: string | string[] = []) {
+    const viaChannels = this.getViaChannels(via)
+
+    viaChannels.forEach((channel) => channel.clear())
+  }
+
+  private getViaChannels(via: string | string[]) {
     const viaArray = Array.isArray(via) ? via : [via]
 
     // Check each specified channel is bound
@@ -27,18 +54,13 @@ export class FakeHandler extends NotificationHandler {
     })
 
     // Get specified channels, or all channels if none are specified
-    const viaChannels = (
+    return (
       viaArray.length
         ? this.channelKeys
             .filter((key) => viaArray.includes(key))
             .map((key) => this.channelBindings[key])
         : this.channels
     ) as FakeChannel[]
-
-    // For each specified channel, assert notification was sent
-    viaChannels.forEach((channel) => {
-      channel.assertSent(notificationConstructor)
-    })
   }
 }
 
