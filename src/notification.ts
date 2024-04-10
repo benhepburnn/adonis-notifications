@@ -1,4 +1,4 @@
-import { Notifiable, SmsMessage } from './types.js'
+import { Notifiable } from './types.js'
 
 export abstract class Notification {
   protected notifiable?: Notifiable
@@ -7,11 +7,7 @@ export abstract class Notification {
     this.notifiable = notifiable
   }
 
-  via() {
-    return ['sms']
-  }
-
-  toSms(): SmsMessage {
-    throw new Error('Not implemented')
+  via(): string[] {
+    return []
   }
 }
