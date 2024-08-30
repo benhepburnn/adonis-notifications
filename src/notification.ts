@@ -1,7 +1,7 @@
 import { Notifiable } from './types.js'
 
 export abstract class Notification {
-  protected notifiable?: Notifiable
+  notifiable?: Notifiable
 
   to(notifiable: Notifiable) {
     this.notifiable = notifiable
