@@ -15,7 +15,7 @@ export class FakeHandler extends NotificationHandler {
     })
   }
 
-  assertSent<T extends Constructor<Notification>>(
+  assertSent<T extends Constructor<Notification<any>>>(
     notificationConstructor: T,
     via: string | string[] = []
   ) {
@@ -27,7 +27,7 @@ export class FakeHandler extends NotificationHandler {
     })
   }
 
-  assertNotSent<T extends Constructor<Notification>>(
+  assertNotSent<T extends Constructor<Notification<any>>>(
     notificationConstructor: T,
     via: string | string[] = []
   ) {
@@ -65,12 +65,12 @@ export class FakeHandler extends NotificationHandler {
 }
 
 export class FakeChannel extends NotificationChannel {
-  sent: Notification[] = []
+  sent: Notification<any>[] = []
 
   boot(): void {}
   shutdown(): void {}
 
-  async send(notification: Notification) {
+  async send(notification: Notification<any>) {
     this.sent.push(notification)
   }
 
@@ -81,7 +81,7 @@ export class FakeChannel extends NotificationChannel {
   /**
    * Assert the mentioned notification was sent during the fake mode
    */
-  assertSent<T extends Constructor<Notification>>(
+  assertSent<T extends Constructor<Notification<any>>>(
     notificationConstructor: T,
     findFn?: (notification: InstanceType<T>) => boolean
   ) {
@@ -104,7 +104,7 @@ export class FakeChannel extends NotificationChannel {
   /**
    * Assert the mentioned notification was NOT sent during the fake mode
    */
-  assertNotSent<T extends Constructor<Notification>>(
+  assertNotSent<T extends Constructor<Notification<any>>>(
     notificationConstructor: T,
     findFn?: (notification: InstanceType<T>) => boolean
   ) {
@@ -133,9 +133,9 @@ export class FakeChannel extends NotificationChannel {
    * Assert the mentioned notification was sent for expected number
    * of times
    */
-  assertSentCount(notificationConstructor: Constructor<Notification>, count: number): void
+  assertSentCount(notificationConstructor: Constructor<Notification<any>>, count: number): void
   assertSentCount(
-    notificationConstructor: Constructor<Notification> | number,
+    notificationConstructor: Constructor<Notification<any>> | number,
     count?: number
   ): void {
     if (typeof notificationConstructor === 'number') {

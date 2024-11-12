@@ -3,7 +3,7 @@ import { Notification } from '../notification.js'
 
 export class NotificationFailedException extends Exception {
   static status = 500
-  notification: Notification
+  notification: Notification<any>
   result: PromiseSettledResult<any>[]
 
   constructor(notification: Notification<any>, result: PromiseSettledResult<any>[]) {
