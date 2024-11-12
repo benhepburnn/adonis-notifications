@@ -13,7 +13,10 @@ export class NotificationsService {
     this.handler = new DefaultHandler(config)
   }
 
-  async sendNotification(to: Notifiable, notification: Notification) {
+  async sendNotification<NotifiableType = Notifiable>(
+    to: NotifiableType,
+    notification: Notification<NotifiableType>
+  ) {
     notification.to(to)
     return this.handler.send(notification)
   }

@@ -1,6 +1,6 @@
 import { NotificationChannel } from '../channels/notification_channel.js'
 import { Notification } from '../notification.js'
-import { NotificationsConfig } from '../types.js'
+import { Notifiable, NotificationsConfig } from '../types.js'
 import { ChannelNotBoundException, NotificationFailedException } from '../exceptions/index.js'
 
 export abstract class NotificationHandler {
@@ -20,7 +20,9 @@ export abstract class NotificationHandler {
 
   abstract boot(config: NotificationsConfig): void
 
-  async send(notification: Notification): Promise<PromiseSettledResult<any>[]> {
+  async send<NotifiableType = Notifiable>(
+    notification: Notification<NotifiableType>
+  ): Promise<PromiseSettledResult<any>[]> {
     const via = notification.via()
 
     // Validate all via channels are bound

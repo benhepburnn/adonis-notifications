@@ -1,9 +1,9 @@
 import { Notifiable } from './types.js'
 
-export abstract class Notification {
-  notifiable?: Notifiable
+export abstract class Notification<NotifiableType = Notifiable> {
+  notifiable?: NotifiableType
 
-  to(notifiable: Notifiable) {
+  to(notifiable: NotifiableType) {
     this.notifiable = notifiable
   }
 

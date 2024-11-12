@@ -6,7 +6,12 @@ export type NotificationsConfig = {
   channels: Record<string, Constructor<NotificationChannel>>
 }
 
-export interface Notifiable {
+export interface NotifiableMobile {
   notificationGetMobile(): string
+}
+
+export interface NotifiableEmail {
   notificationGetEmail(): string
 }
+
+export type Notifiable = NotifiableMobile & NotifiableEmail

@@ -6,7 +6,7 @@ export class NotificationFailedException extends Exception {
   notification: Notification
   result: PromiseSettledResult<any>[]
 
-  constructor(notification: Notification, result: PromiseSettledResult<any>[]) {
+  constructor(notification: Notification<any>, result: PromiseSettledResult<any>[]) {
     super(`Notification failed: ${notification.constructor.name}`)
     this.notification = notification
     this.result = result
