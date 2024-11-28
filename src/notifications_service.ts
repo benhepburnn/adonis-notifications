@@ -21,6 +21,13 @@ export class NotificationsService {
     return this.handler.send(notification)
   }
 
+  async sendBulkNotification<NotifiableType = Notifiable>(
+    to: NotifiableType[],
+    notification: Notification<NotifiableType>
+  ) {
+    return this.handler.sendBulk(notification, to)
+  }
+
   fake() {
     this.handler = new FakeHandler(this.config)
     return this.handler as FakeHandler

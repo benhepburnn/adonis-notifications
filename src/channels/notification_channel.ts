@@ -5,5 +5,10 @@ export abstract class NotificationChannel {
 
   abstract send(notification: Notification<any>): Promise<any>
 
+  abstract sendBulk<NotifiableType>(
+    notification: Notification<NotifiableType>,
+    to: NotifiableType[]
+  ): Promise<any>
+
   shutdown() {}
 }

@@ -42,4 +42,28 @@ export abstract class NotificationHandler {
 
     return result
   }
+
+  async sendBulk<NotifiableType = Notifiable>(
+    notification: Notification<NotifiableType>,
+    to: NotifiableType[]
+  ): Promise<PromiseSettledResult<any>[]> {
+    const via = notification.via()
+
+    // Validate all via channels are bound
+    via.forEach((channelKey) => {
+      if (!this.channelKeys.includes(channelKey)) throw new ChannelNotBoundException(channelKey)
+    })
+
+    // Start all tasks
+    const tasks = via.map(
+      async (channelKey) => await this.channelBindings[channelKey].sendBulk(notification, to)
+    )
+
+    const result = await Promise.allSettled(tasks)
+
+    if (result.some((promiseResult) => promiseResult.status === 'rejected'))
+      throw new NotificationFailedException(notification, result)
+
+    return result
+  }
 }
