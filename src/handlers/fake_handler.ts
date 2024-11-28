@@ -74,10 +74,6 @@ export class FakeChannel extends NotificationChannel {
     this.sent.push(notification)
   }
 
-  async sendBulk(notification: Notification<any>, _to: any[]) {
-    this.sent.push(notification)
-  }
-
   clear() {
     this.sent = []
   }

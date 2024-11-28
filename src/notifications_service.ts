@@ -14,18 +14,11 @@ export class NotificationsService {
   }
 
   async sendNotification<NotifiableType = Notifiable>(
-    to: NotifiableType,
+    to: NotifiableType | NotifiableType[],
     notification: Notification<NotifiableType>
   ) {
     notification.to(to)
     return this.handler.send(notification)
-  }
-
-  async sendBulkNotification<NotifiableType = Notifiable>(
-    to: NotifiableType[],
-    notification: Notification<NotifiableType>
-  ) {
-    return this.handler.sendBulk(notification, to)
   }
 
   fake() {
