@@ -1,10 +1,10 @@
 import { Notifiable } from './types.js'
 
 export abstract class Notification<NotifiableType = Notifiable> {
-  notifiable?: NotifiableType[]
+  notifiable?: NotifiableType | NotifiableType[]
 
   to(notifiable: NotifiableType | NotifiableType[]) {
-    this.notifiable = Array.isArray(notifiable) ? notifiable : [notifiable]
+    this.notifiable = notifiable
   }
 
   via(): string[] {
