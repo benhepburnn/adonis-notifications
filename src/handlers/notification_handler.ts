@@ -38,7 +38,7 @@ export abstract class NotificationHandler {
     const result = await Promise.allSettled(tasks)
 
     if (result.some((promiseResult) => promiseResult.status === 'rejected'))
-      throw new NotificationFailedException(notification, result)
+      throw new NotificationFailedException(notification, result, JSON.stringify(result))
 
     return result
   }
